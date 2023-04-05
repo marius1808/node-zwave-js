@@ -395,3 +395,15 @@
 		}
 	]
 }
+binary_sensor:
+  - platform: template
+    sensors: 
+      flood:
+        device_class: moisture
+        friendly_name: 'Flood sensor'
+        value_template: >- 
+          {%- if is_state("sensor.fibaro_system_fgfs101_zwave_flood_sensor_flood", "2") -%}
+          on
+          {%- else -%}
+          off
+          {%- endif -%}
